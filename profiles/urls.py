@@ -19,3 +19,4 @@ urlpatterns = [
 
     path("search", searchPageView, name="search"),
 ]   
+
