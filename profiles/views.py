@@ -5,16 +5,31 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def indexPageView(request) :
-    return HttpResponse('Home Page') 
+    context = {
+           } 
+    
+    return render(request, 'profiles/index.html', context)
 
 def aboutPageView(request) :
-    return HttpResponse('About Page') 
+    context = {
+            } 
+
+    return render(request, 'profiles/about.html', context)
 
 def displayPageView(request) :
-    return HttpResponse('Display Page') 
+    context = {
+            } 
+
+    return render(request, 'profiles/display.html', context)
 
 def inputPageView(request):
-    return HttpResponse('Input Page')
+    context = {
+            } 
+
+    return render(request, 'profiles/input.html', context)
 
 def searchPageView(request):
-    return HttpResponse('Search Page')
+    context = {
+            } 
+
+    return render(request, 'profiles/search.html', context)
