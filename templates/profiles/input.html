@@ -12,32 +12,38 @@
     </div>
 </header>
 <div>
-    <form action="/application_url/" method="post">
+    <form name="form" method="post" action="{% url 'inputprofile' %}">
+        <br><br>
+        {% csrf_token %}
         <label for="first_name">First Name:</label>
         <input id="first_name" type="text" name="first_name">
-
+        <br><br>
         <label for="last_name">Last Name:</label>
         <input type="last_name" type="text" name="last_name">
-
+        <br><br>
         <label for="user_name">Username:</label>
         <input type="user_name" type="text" name="user_name">
-
+        <br><br>
         <label for="password">Password:</label>
         <input type="password" type="password" name="password">
-
+        <br><br>
         <label for="email">Email:</label>
         <input type="email" type="text" name="email">
-
+        <br><br>
         <label for="phone">Phone:</label>
         <input type="phone" type="text" name="phone">
-
+        <br><br>
         <label for="profile_photo">Image:(Not Working)</label>
-        <input type="profile_photo" type="text" name="profile_photo">
-
-        <label for="skill">Image:(Not Working)</label>
-        <input type="skill" type="text" name="skill">
-
-        <input type="submit" value="Save">
+        <input type="profile_photo" type="img" name="profile_photo">
+        <br><br>
+        <label for="id">Skills: </label>
+        <select name="id">
+            {% for skills in our_skills %}
+                <option value="{{ skills.id }}">{{ skills.title }}: {{ skills.description }}</option>
+            {% endfor %} 
+        </select>
+        <br><br>
+        <button type="submit" value="Save">Save</button>
     </form>         
 </div>
 {% endblock %} 

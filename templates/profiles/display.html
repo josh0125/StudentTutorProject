@@ -11,4 +11,25 @@
         </div>
     </div>
 </header>
+<div class="container">
+    {% for profile in our_profiles %}
+    <p>
+        {{ profile.first_name }}
+        {{ profile.last_name }}
+        {{ profile.email }}
+        {{ profile.phone }}
+        {{ profile.username }}
+        {{ profile.password }}
+        {{ profile.profile_photo }}
+        {% for skill in profile.skills.all %}
+            <br>
+            {{ skill.title }}
+            <br>
+            {{ skill.description }}         
+        {% endfor %}
+        </p>  
+    {% endfor %} 
+</div>
+
+
 {% endblock %} 
