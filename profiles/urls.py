@@ -5,9 +5,10 @@ from .views import aboutPageView
 from .views import displayPageView
 from .views import inputPageView
 from .views import searchPageView
-from .views import inputProfilePageView
+# from .views import inputProfilePageView
 from .views import searchProfilePageView
-from .views import findProfilePageView
+from .views import findSkillsPageView, searchSkillsView
+from .views import loginPageView, signin, signout, profilePageView, storeProfilePageView
 
 
 urlpatterns = [
@@ -20,12 +21,18 @@ urlpatterns = [
     path("input", inputPageView, name="input"), 
 
     path("search", searchPageView, name="search"),
-
     path("searchprofile/", searchProfilePageView, name="searchprofile"),
-    
-    path("findprofile/", findProfilePageView, name="findprofile"),
 
-    path("inputprofile/", inputProfilePageView, name="inputprofile"),
+    path("searchskills", searchSkillsView, name="searchskills"),
+    path("findskills/", findSkillsPageView, name="findskills"),
+
+    path('login/', loginPageView, name='login'),
+    path('signin/', signin, name='signin'),
+    path('signout/', signout, name='signout'),
+
+    path('profile', profilePageView, name='profile'),
+    path('storeprofile', storeProfilePageView, name='storeprofile'),
+    path('editprofile', storeProfilePageView, name='editprofile'),
 
 
 ]   
