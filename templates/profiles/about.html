@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<p>The trip to {{trip_name}} will be {{trip_length}} days with airfare.</p>
-<h4>Places to visit include: </h4> 
-<ul> 
-    {% for sName in places_to_visit %} 
-    <li>{{ sName }}</li> 
-    {% endfor %}    
-</ul>     
+<div style="padding-top: 75px; padding-left: 50px; padding-right: 50px; text-align: center;">
+    <p>The trip to {{trip_name}} will be {{trip_length}} days with airfare.</p>
+    <h4>Places to visit include: </h4> 
+    <ul> 
+        {% for sName in places_to_visit %} 
+        <li>{{ sName }}</li> 
+        {% endfor %}    
+    </ul>     
+<div>
 {% endblock %} 
