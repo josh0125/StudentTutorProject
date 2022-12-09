@@ -50,7 +50,34 @@
     </div>
   </div>
 </div>
-
+</section>
+<!-- Display the Skills of the Current User with the Option to Delete or Add New Skills -->
+<section class="h-100 h-custom" style="background-color: #fff; padding-top: 0px;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Current Skills</h3>
+            {% for skill in other.skills.all %}
+              <div class="form-outline mb-4">
+                <p class="form-control">
+                  {{ skill.title }}: {{ skill.description }}
+                  <form action="{% url 'deleteskill' %}" name="form" method="get">
+                    <input type="text" name='title' id='title' value={{skill.title}} hidden>
+                  <button type="submit" class="btn btn-lg mb-1" style="background: #67b0d1; color:white;">Delete</button>
+                  </form>
+                </p>  
+              </div>     
+            {% endfor %}
+            <a class="btn btn-lg mb-1" style="background: #67b0d1; color:white; text-align: center;" href="{% url 'addskill' %}">Add Skills</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 {% else %}
 
 <section class="h-100 h-custom" style="background-color: #fff; padding-bottom: 0px;">
