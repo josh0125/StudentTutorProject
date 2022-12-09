@@ -9,6 +9,7 @@ from .views import searchPageView
 from .views import searchProfilePageView
 from .views import findSkillsPageView, searchSkillsView
 from .views import loginPageView, signin, signout, profilePageView, storeProfilePageView
+from .views import addSkill, addSkillSubmit, addNewSkillSubmit, deleteSkillSubmit
 
 
 urlpatterns = [
@@ -33,7 +34,13 @@ urlpatterns = [
     path('profile', profilePageView, name='profile'),
     path('storeprofile', storeProfilePageView, name='storeprofile'),
     path('editprofile', storeProfilePageView, name='editprofile'),
+    path('addskill', addSkill, name='addskill'),
+    path('skillsubmit/', addSkillSubmit, name='skillsubmit'),
+    path('newskillsubmit/', addNewSkillSubmit, name='newskillsubmit'),
+    path('deleteskill/', deleteSkillSubmit, name='deleteskill'),
+    
 
+    
 
 ]   
 
