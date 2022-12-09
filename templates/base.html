@@ -574,11 +574,11 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><a class="nav-link scrollto" href="{% url 'index' %}">Profile</a></li>
-              <li><a class="nav-link scrollto" href="{% url 'index' %}">Popup Form</a></li>
-              <li><a class="nav-link scrollto" href="{% url 'index' %}">API Page</a></li>
-              <li><a class="nav-link scrollto" href="{% url 'index' %}">Lab Vitals</a></li>
               <li><a class="nav-link scrollto" href="{% url 'index' %}">About</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'profile' %}">Profile</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'search' %}">Find People</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'searchskills' %}">Find Help</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'display' %}">Display</a></li>
               <li><a class="nav-link scrollto active" href="{% url 'index' %}">Logout</a></li>
             </ul>
           </div>
@@ -599,7 +599,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>KidneyHelp</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>StudentTutor</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
@@ -611,7 +611,7 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="index" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href='{% url 'index' %}' class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
