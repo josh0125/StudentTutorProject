@@ -28,7 +28,7 @@ def displayPageView(request) :
     data = Profile.objects.all()
 
     context = {
-        "our_profiles" : data
+        "our_profiles" : data,
     }
 
     return render(request, 'profiles/display.html', context)
