@@ -16,7 +16,7 @@ class Profile(models.Model) :
     password = models.CharField(max_length=20)
     email = models.EmailField(max_length=100)    
     phone = models.CharField(max_length=13, blank=True)
-    #profile_photo = models.ImageField(upload_to='photos')  
+    profile_photo = models.ImageField(upload_to='photos', blank=True)  
     skills = models.ManyToManyField(Skill, blank=True)
 
     def __str__(self):
