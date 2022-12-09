@@ -18,9 +18,16 @@
                 <div class="card-body p-4">
                   <div class="d-flex text-black">
                     <div class="flex-shrink-0">
+                      {% if profile.profile_photo %}
+                      <img src="{{profile.profile_photo.url}}"
+                        alt="Generic placeholder image" class="img-fluid"
+                        style="width: 180px; border-radius: 10px;">
+
+                      {% else %}
                       <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
                         alt="Generic placeholder image" class="img-fluid"
                         style="width: 180px; border-radius: 10px;">
+                      {% endif %}
                     </div>
                     <div class="flex-grow-1 ms-3">
                       <h5 class="mb-1">{{ profile.first_name }} {{ profile.last_name }}</h5>
