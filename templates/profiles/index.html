@@ -11,14 +11,14 @@
     {% if user.is_authenticated %}
     <div class="hero-container" data-aos="fade-up">
       <h1>Welcome {{ fName }} {{ lName }}</h1>
-      <h2>Keep track of your health</h2>
+      <h2>Stay in touch with your peers</h2>
       <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
     </div>
 
     {% else %}
     <div class="hero-container" data-aos="fade-up">
-      <h1>Welcome to Kidney Help</h1>
-      <h2>Stay in control of your health</h2>
+      <h1>Welcome to Student Network</h1>
+      <h2>Stay in touch with your peers</h2>
       <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
     </div>
     {% endif %}
@@ -37,7 +37,7 @@
 
     <div class="section-title" data-aos="fade-in" data-aos-delay="100">
       <h2>Services</h2>
-      <p>Here are some of the services you will be able to use with Kidney Help:</p>
+      <p>Here are some of the services you will be able to use with Student Network:</p>
     </div>
 
     <div class="row" style="
@@ -58,8 +58,8 @@
             height: 100%;
             top: 0;
             left: 0;
-            z-index: 1;"></span>Exercise</a></h4>
-          <p class="description">Keep track of your workouts and daily exercise</p>
+            z-index: 1;"></span>Connect</a></h4>
+          <p class="description">Stay connected with your classmates outside of the classroom</p>
         </div>
       </div>
 
@@ -71,34 +71,8 @@
             height: 100%;
             top: 0;
             left: 0;
-            z-index: 1;"></span>Vitals</a></h4>
-          <p class="description">Track your vitals reports from you visits to the doctors office</p>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-          <div class="icon"><i class="bx bx-tachometer"></i></div>
-          <h4 class="title"><a href="{% url 'index' %}"><span style="position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;"></span>Progress</a></h4>
-          <p class="description">See how hard you are working with our progress reports</p>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-          <div class="icon"><i class="bx bx-world"></i></div>
-          <h4 class="title"><a href="{% url 'index' %}"><span style="position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;"></span>Live Healthy</a></h4>
-          <p class="description">Track your meals and receive suggesitons on what could improve your diet</p>
+            z-index: 1;"></span>Help</a></h4>
+          <p class="description">Ask and Answer questions from other students</p>
         </div>
       </div>
 
@@ -116,7 +90,7 @@
     <div class="row no-gutters">
       <div class="content col-xl-5 d-flex align-items-stretch" data-aos="fade-up">
         <div class="content">
-          <h3>Signup for Kidney Help!</h3>
+          <h3>Signup for Student Network!</h3>
           <p>
             At Kidney Help, we do our best to help patients with kidney disease manage their diet and lifestyle decisions.
           </p>
@@ -135,16 +109,6 @@
               <i class="bx bx-cube-alt"></i>
               <h4>Submit Lab Reports</h4>
               <p>Keep track of you vitals, and keep a record of your history at the doctors office</p>
-            </div>
-            <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-              <i class="bx bx-images"></i>
-              <h4>Get Updates</h4>
-              <p>We will update you if your levels are to high and give guidelines on how to life healthier</p>
-            </div>
-            <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-              <i class="bx bx-shield"></i>
-              <h4>View Progress</h4>
-              <p>See how much work you are putting in with our customized progress reports</p>
             </div>
           </div>
         </div><!-- End .content-->
