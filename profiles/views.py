@@ -28,7 +28,7 @@ def displayPageView(request) :
     data = Profile.objects.all()
 
     context = {
-        "our_profiles" : data
+        "our_profiles" : data,
     }
 
     return render(request, 'profiles/display.html', context)
@@ -76,12 +76,21 @@ def searchSkillsView(request):
 
 
 def findSkillsPageView(request):
-    sSkill = (request.GET['skill']).upper()
+    sSkill = (request.GET['skill'])
+
+    print(sSkill)
 
     new_skill = Skill.objects.get(title=sSkill)
+
     data = Profile.objects.filter(skills=new_skill)
 
-    return render(request, 'profiles/searchskills.html')
+    if data.count() > 0:
+        context = {
+            "our_profiles" : data
+        }
+        return render(request, 'profiles/display.html', context)
+    else:
+        return HttpResponse("Not found")
 
 
 
@@ -176,6 +185,8 @@ def profilePageView(request):
 
         person = Profile.objects.get(user_name=new_person.username)
 
+        other = Profile.objects.get(user_name=new_person.username)
+
         fname = person.first_name
         lname = person.last_name
         phone = person.phone
@@ -191,7 +202,8 @@ def profilePageView(request):
              'username' : username , 'password': password}
 
         context = {
-            'profile' : data
+            'profile' : data,
+            'other' : other
         }
 
         return render(request, 'profiles/profile.html', context)
@@ -273,3 +285,70 @@ def storeProfilePageView(request):
             }
 
     return render(request, 'profiles/index.html', context)
+
+def addSkill(request):
+    data = Skill.objects.all()
+
+    context = {
+        'skills' : data
+    }
+
+    return render(request, 'profiles/skills.html', context)
+
+
+def addSkillSubmit(request):
+    sSkill = (request.GET['skills'])
+
+    person = request.user
+
+    profile = Profile.objects.get(user_name=person.username)
+    
+    new_skill = Skill.objects.get(title=sSkill)
+
+    profile.skills.add(new_skill)
+
+    data = Skill.objects.all()
+
+    context = {
+        'skills' : data
+    }
+    return redirect('profile')
+    #return render(request, 'profiles/skills.html', context)
+
+def addNewSkillSubmit(request):
+    sTitle = (request.GET['skill'])
+    sDescription = (request.GET['description'])
+
+    new_skill = Skill()
+
+    new_skill.title = sTitle
+    new_skill.description = sDescription
+
+    new_skill.save()
+
+    person = request.user
+
+    profile = Profile.objects.get(user_name=person.username)
+
+    profile.skills.add(new_skill)
+
+    data = Skill.objects.all()
+
+    context = {
+        'skills' : data
+    }
+    return redirect('profile')
+    #return render(request, 'profiles/skills.html', context)
+
+def deleteSkillSubmit(request):
+    sTitle = (request.GET['title'])
+
+    old_skill = Skill.objects.get(title=sTitle)
+
+    person = request.user
+
+    profile = Profile.objects.get(user_name=person.username)
+
+    profile.skills.remove(old_skill)
+
+    return redirect('profile')
