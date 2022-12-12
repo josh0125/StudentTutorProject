@@ -2,20 +2,43 @@
 {% load static %}
 {% block content %}
 <!-- Masthead-->
-<header class="masthead">
-    <div class="container d-flex h-100 align-items-center">
-        <div class="mx-auto text-center">
-            <h1 class="mx-auto my-0 text-uppercase">Grayscale</h1>
-            <h2 class="text-white-50 mx-auto mt-2 mb-5">A free, responsive, one-page Bootstrap theme created by Start Bootstrap.</h2>
-            <a class="btn btn-primary js-scroll-trigger" href="#about">Get Started</a>
-        </div>
-    </div>
-</header>
+<div style="padding-top: 75px; padding-left: 50px; padding-right: 50px; text-align: center;">
+
 <div>
-    <form action="/application_url/" method="post">
-        <label for="customer_name">What is your name:</label>
-        <input id="cust_name" type="text" name="cust_name">
-        <input type="submit" value="Save">
+    <form name="form" method="post" action="{% url 'inputprofile' %}">
+        <br><br>
+        {% csrf_token %}
+        <label for="first_name">First Name:</label>
+        <input id="first_name" type="text" name="first_name">
+        <br><br>
+        <label for="last_name">Last Name:</label>
+        <input type="last_name" type="text" name="last_name">
+        <br><br>
+        <label for="user_name">Username:</label>
+        <input type="user_name" type="text" name="user_name">
+        <br><br>
+        <label for="password">Password:</label>
+        <input type="password" type="password" name="password">
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" type="text" name="email">
+        <br><br>
+        <label for="phone">Phone:</label>
+        <input type="phone" type="text" name="phone">
+        <br><br>
+        <label for="profile_photo">Image:(Not Working)</label>
+        <input type="profile_photo" type="img" name="profile_photo">
+        <br><br>
+        <label for="id">Skills: </label>
+        <select name="id">
+            {% for skills in our_skills %}
+                <option value="{{ skills.id }}">{{ skills.title }}: {{ skills.description }}</option>
+            {% endfor %} 
+        </select>
+        <br><br>
+        <button type="submit" value="Save">Save</button>
     </form>         
+</div>
+
 </div>
 {% endblock %} 
