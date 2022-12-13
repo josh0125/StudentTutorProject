@@ -15,7 +15,7 @@
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Edit Your Account</h3>
 
-            <form class="px-md-2" name="newProfile" method="POST" action="{% url 'editprofile' %}" enctype="multipart/form-data">
+            <form class="px-md-2" name="newProfile" method="POST" action="{% url 'editprofile' %}">
             {% csrf_token %}
               <div class="row">
                   <!-- First Name Input -->
@@ -39,17 +39,20 @@
                 <input type="email" name="email" id="email" class="form-control" value={{ profile.email }}>
                 <label for="email" class="form-label">Email</label>
               </div>
-              <!--
               <div>
-                <img src=""
+                <img src="{{ other.profile_photo.url }}"
                         alt="Generic placeholder image" class="img-fluid"
                         style="width: 180px; border-radius: 10px;">
               <div>
               <div class="form-outline mb-4">
-                <input type="file" name="photo" id="photo" class="form-control" value=>
+                <select name="race" id="race" class="form-control">
+                  {% for photo in photos %}
+                  <option value={{ photo.url }}>{{ photo.url }}</option>
+                  {% endfor %}
+                </select>
+                <input type="file" name="photo" id="photo" class="form-control" value={{ other.profile_photo.url }}>
                 <label for="photo" class="form-label">Choose a profile picture:</label>
               </div> 
-            -->
 
               <button type="submit" class="btn btn-lg mb-1" style="background: #67b0d1; color:white;">Submit Changes</button>
 

@@ -57,9 +57,13 @@ def searchProfilePageView(request) :
     sLast = (request.GET['last_name']).upper()
     data = Profile.objects.filter(first_name=sFirst, last_name=sLast)
 
+    person = sFirst + ' ' + sLast
+
     if data.count() > 0:
         context = {
-            "our_profiles" : data
+            "our_profiles" : data,
+            "person" : person,
+            "skill" : ''
         }
         return render(request, 'profiles/display.html', context)
     else:
@@ -88,7 +92,9 @@ def findSkillsPageView(request):
 
     if data.count() > 0:
         context = {
-            "our_profiles" : data
+            "our_profiles" : data,
+            "person" : '',
+            "skill" : sSkill
         }
         return render(request, 'profiles/display.html', context)
     else:
@@ -177,12 +183,14 @@ def signin(request):
 def signout(request):
     logout(request)
     messages.success(request, "Logged out successfully.")
-    return redirect('index')
+    return pect('index')
 
 
 # Profile
 def profilePageView(request):
     if request.user.is_authenticated :
+        people = Profile.objects.all()
+
         new_person = request.user
 
         person = Profile.objects.get(user_name=new_person.username)
@@ -205,7 +213,8 @@ def profilePageView(request):
 
         context = {
             'profile' : data,
-            'other' : other
+            'other' : other,
+            'photos' : people
         }
 
         return render(request, 'profiles/profile.html', context)
@@ -219,13 +228,11 @@ def storeProfilePageView(request):
 
         new_person = Profile.objects.get(user_name=person.username)
 
-        '''
-        photo = request.FILE.get('photo')
+        photo = request.POST.get('photo')
         if photo == '':
             print('blank')
         else: 
-            new_person.profile_photo = request.FILE.get('photo')
-        '''
+            new_person.profile_photo = 'photos/' + request.POST.get('photo')
 
         new_person.first_name = request.POST.get('fName')
         new_person.last_name = request.POST.get('lName')
@@ -241,6 +248,7 @@ def storeProfilePageView(request):
             }
 
         return render(request, 'profiles/index.html', context)
+
 
     else:
         if request.method == 'POST':
@@ -291,10 +299,25 @@ def storeProfilePageView(request):
 
             myuser.save()
 
+            if request.method == 'POST':
+                username = request.POST['username']
+                pass1 = request.POST['pass1']
+
+                user = authenticate(username=username, password=pass1)
+
+                if user is not None:
+                    login(request, user)
+                    fname = user.first_name
+
+                else:
+                    messages.error(request, "Bad Credentials!")
+                    return HttpResponse('wrong password buddy')
+
             context = {
                 'fName':fname, 
                 'lName':lname
             }
+        return redirect('addskill')
 
     return render(request, 'profiles/index.html', context)
 

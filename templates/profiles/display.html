@@ -7,11 +7,12 @@
 <!-- Masthead-->
 <div style="padding-top: 75px; padding-left: 50px; padding-right: 50px; text-align: center;">
 
-<div class="container">
+<div class="container" style="padding-top: 75px;">
     <!-- New Stuff -->
-    <section class="vh-100" style="background-color: #9de2ff; overflow-y:auto;">
+    <h3>{{ skill }}{{ person }}</h3>
+    <section class="vh-100" style="background-color: #67b0d1; overflow-y:auto;">
         {% for profile in our_profiles %}
-            <div class="col col-md-9 col-lg-7 col-xl-5" style="padding-left: 200px; padding-bottom: 25px;">
+            <div class="col col-md-9 col-lg-7 col-xl-5" style="padding-left: 300px; padding-right: 300px; padding-bottom: 25px;">
               <div class="card" style="border-radius: 15px; width: 700px;">
                 <div class="card-body p-4">
                   <div class="d-flex text-black">
@@ -70,7 +71,7 @@
                         <li class="dropdown" style="width: 100%; text-align: center;"><a href="#"><span>View Skills</span> <i class="bi bi-chevron-down"></i></a>
                             <ul style="width: 100%;">
                             {% for skill in profile.skills.all %}
-                              <li style="width: 100%;"><a href="">{{ skill.title }}: {{ skill.description }}</a></li>
+                              <li style="width: 100%; overflow-y: auto;"><a href="">{{ skill.title }}: {{ skill.description }}</a></li>
                             {% endfor %}
                             </ul>
                           </li>
