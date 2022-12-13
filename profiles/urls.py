@@ -22,9 +22,6 @@ urlpatterns = [
     path("input", inputPageView, name="input"), 
 
     path("search", searchPageView, name="search"),
-<<<<<<< HEAD
-]   
-=======
     path("searchprofile/", searchProfilePageView, name="searchprofile"),
 
     path("searchskills", searchSkillsView, name="searchskills"),
@@ -47,4 +44,3 @@ urlpatterns = [
 
 ]   
 
->>>>>>> origin

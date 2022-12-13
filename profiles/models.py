@@ -1,8 +1,6 @@
 from django.db import models
 
 # Create your models here.
-<<<<<<< HEAD
-=======
 class Skill(models.Model) :
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=500)
@@ -33,4 +31,3 @@ class Profile(models.Model) :
         self.last_name = self.last_name.upper()
         super(Profile, self).save() # Call the "real" save() method.                                          
 
->>>>>>> origin

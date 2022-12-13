@@ -19,9 +19,6 @@ def aboutPageView(request) :
     return HttpResponse('About Page') 
 
 def displayPageView(request) :
-<<<<<<< HEAD
-    return HttpResponse('Display Page') 
-=======
     data = Profile.objects.all()
 
     context = {
@@ -29,14 +26,10 @@ def displayPageView(request) :
     }
 
     return render(request, 'profiles/display.html', context)
->>>>>>> origin
 
 
 
 def inputPageView(request):
-<<<<<<< HEAD
-    return HttpResponse('Input Page')
-=======
     data_skill = Skill.objects.all()
 
     context = {
@@ -44,14 +37,10 @@ def inputPageView(request):
     }
 
     return render(request, 'profiles/input.html', context)
->>>>>>> origin
 
 # Search People
 
 def searchPageView(request):
-<<<<<<< HEAD
-    return HttpResponse('Search Page')
-=======
     context = {
             } 
 
@@ -357,4 +346,3 @@ def deleteSkillSubmit(request):
     profile.skills.remove(old_skill)
 
     return redirect('profile')
->>>>>>> origin
