@@ -15,9 +15,13 @@
                         <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Search Skills You Need Help With</h3>
                         <form action="{% url 'findskills' %}" name="form" method="get">
                             <div class="form-outline mb-4">
-                                <input type="text" name='skill' id='skill' class="form-control">
-                                <label for='skill' class="form-label">Enter the skill you need help with:</label>
-                            </div>
+                                <select name="skill" id="skill" class="form-control">
+                                    {% for skill in skills %}
+                                        <option value={{ skill.title }}>{{ skill.title }}: {{ skill.description }}</option>
+                                    {% endfor %}
+                                </select>
+                                <label for="skill" class="form-label">Skill</label>
+                              </div>
                             <button type="submit" class="btn btn-lg mb-1" style="background: #67b0d1; color:white;">Search</button>
                         </form> 
                     </div>

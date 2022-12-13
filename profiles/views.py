@@ -69,7 +69,9 @@ def searchProfilePageView(request) :
 # Get Help with Skills
 
 def searchSkillsView(request):
+    skills = Skill.objects.all() 
     context = {
+        'skills' : skills
             }
 
     return render(request, 'profiles/searchskills.html', context)
@@ -215,12 +217,21 @@ def storeProfilePageView(request):
     if request.user.is_authenticated :
         person = request.user
 
-        new_person = Profile.objects.get(username=person.username)
+        new_person = Profile.objects.get(user_name=person.username)
+
+        '''
+        photo = request.FILE.get('photo')
+        if photo == '':
+            print('blank')
+        else: 
+            new_person.profile_photo = request.FILE.get('photo')
+        '''
 
         new_person.first_name = request.POST.get('fName')
         new_person.last_name = request.POST.get('lName')
         new_person.phone = request.POST.get('phone')
         new_person.email = request.POST.get('email')
+        #new_person.profile_photo = ''
 
         new_person.save()
 
@@ -239,6 +250,7 @@ def storeProfilePageView(request):
             new_person.last_name = request.POST.get('lName')
             new_person.phone = request.POST.get('phone')
             new_person.email = request.POST.get('email')
+            new_person.profile_photo = 'photos/' + request.POST.get('photo')
 
             new_person.user_name = request.POST.get('username')
             new_person.password = request.POST.get('pass1')
