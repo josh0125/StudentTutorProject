@@ -183,7 +183,7 @@ def signin(request):
 def signout(request):
     logout(request)
     messages.success(request, "Logged out successfully.")
-    return pect('index')
+    return redirect('index')
 
 
 # Profile
